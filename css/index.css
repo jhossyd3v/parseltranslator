@@ -1,0 +1,106 @@
+body
+{
+    font-family: 'Harry Potter Regular';
+    background-color: #193549;
+    color: rgb(193, 209, 193);
+    text-align: center;
+}
+
+.container
+{
+    width: 100%;
+}
+
+.ta_translator
+{
+    width: 85%;
+    display: inline-block;
+    margin: 0 auto 10px;
+}
+
+.ta_translator label,
+.ta_translator textarea
+{
+    display: block;
+    text-align: left;
+}
+
+.ta_translator textarea
+{
+    width: 100%;
+}
+
+.translator_container,
+.abc_container
+{
+    height: 450px;
+    padding: 10px auto;
+}
+
+.button_container
+{
+    margin-top: 10px;
+}
+
+.button_container button
+{
+    background: green;
+    color: rgb(193, 209, 193);
+    font-family: 'Harry Potter Regular';
+    height: 50px;
+    width: 150px;
+}
+
+.menu_item
+{
+    display: inline-block;
+    list-style: none;
+    margin-right: 15px;
+}
+
+.menu_item a,
+a {
+    color: rgb(193, 209, 193);
+}
+
+.menu_item a:hover
+{
+    color: yellow;
+}
+
+.abc_item
+{
+    display: inline-block;
+    width: 30%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    font-size: 26px;
+    border-right: 1px solid #ccc;
+}
+
+.abc_item--letra
+{
+    text-transform: uppercase;
+}
+
+@media only screen
+and (min-device-width: 768px)  {
+    .container
+    {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .ta_translator
+    {
+        width: 40%;
+        margin: 0 10px;
+    }
+
+    .translator_container,
+    .abc_container
+    {
+        height: 450px;
+        padding: 20px auto;
+    }
+}
