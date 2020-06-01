@@ -4,5 +4,5 @@
 font-family: 'Harry Potter Regular';
 font-style: normal;
 font-weight: normal;
-src: local('Harry Potter Regular'), url('HARRP___.woff') format('woff');
+src: local('Harry Potter Regular'), url('../font/HARRP___.woff') format('woff');
 }

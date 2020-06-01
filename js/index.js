@@ -43,7 +43,7 @@
         let nueva_palabra = '';
 
         caracteres.forEach(caracter => {
-            nueva_palabra += traducir_caracter(caracter);
+            nueva_palabra += traducir_caracter_a_parsel(caracter);
         })
 
         return nueva_palabra;
@@ -55,7 +55,23 @@
 
     } */
 
-    window.parselTranslator = {
-        traducir_a_parsel: traducir_texto_a_parsel
-    };
+    if (!window.hasOwnProperty('parselTranslator')) {
+        window.parselTranslator = {
+            traducir_a_parsel: traducir_texto_a_parsel
+        };
+    }
 })()
+
+window.onload = function () {
+    let boton_traducir = document.getElementById('boton_traducir');
+    boton_traducir.onclick = traducir_click;
+};
+
+function traducir_click(event) {
+    let ta_normal = document.getElementById('ta_normal');
+    let ta_parsel = document.getElementById('ta_parsel');
+
+    let texto_normal = ta_normal.value;
+    let texto_parsel = parselTranslator.traducir_a_parsel(texto_normal);
+    ta_parsel.value = texto_parsel;
+}
