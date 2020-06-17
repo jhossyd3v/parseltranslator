@@ -7,7 +7,7 @@
         e: 'ash',
         f: 'asha',
         g: 'ei',
-        h: 'shi',
+        h: 'shis',
         i: 'osh',
         j: 'xim',
         k: 'ss',
@@ -18,13 +18,13 @@
         p: 'cah',
         q: 'xii',
         r: 'in',
-        s: 'sh',
+        s: 'shs',
         t: 'cass',
         u: 'ish',
         v: 'aus',
         w: 'xi',
         x: 'shh',
-        y: 'ss',
+        y: 'sss',
         z: 'xiy'
     };
 
