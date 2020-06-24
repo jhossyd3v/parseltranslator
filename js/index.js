@@ -28,12 +28,14 @@ function cambio_click(event) {
     let ta_to = document.getElementById('ta_to');
     if (data_traduccion == 'parsel_humano') {
         boton_cambiar.setAttribute('data-traduccion', 'humano_parsel');
-        label_from.textContent = 'Humano';
-        label_to.textContent = 'Parsel';
-    } else {
-        boton_cambiar.setAttribute('data-traduccion', 'parsel_humano');
+        boton_cambiar.textContent = 'Humano a Parsel';
         label_from.textContent = 'Parsel';
         label_to.textContent = 'Humano';
+    } else {
+        boton_cambiar.setAttribute('data-traduccion', 'parsel_humano');
+        boton_cambiar.textContent = 'Parsel a Humano';
+        label_from.textContent = 'Humano';
+        label_to.textContent = 'Parsel';
     }
     ta_from.value = '';
     ta_to.value = '';

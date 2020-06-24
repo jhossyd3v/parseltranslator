@@ -111,6 +111,8 @@
             return buscar_coincidencia_parsel(texto, new_size);
         } else {
             if (size < 2) {
+                respuesta.coincidencia = respuesta.coincidencia.trim();
+                respuesta.size = respuesta.coincidencia.length;
                 return respuesta;
             } else {
                 if (filtrado.length > 0) {
