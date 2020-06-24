@@ -110,16 +110,13 @@
             let new_size = size - 1;
             return buscar_coincidencia_parsel(texto, new_size);
         } else {
-            if (size < 2) {
-                respuesta.coincidencia = respuesta.coincidencia.trim();
-                respuesta.size = respuesta.coincidencia.length;
-                return respuesta;
+            if (filtrado.length == 0) {
+                respuesta.coincidencia = respuesta.coincidencia.trim().substr(0, 1);
+                respuesta.size = 1;
             } else {
-                if (filtrado.length > 0) {
-                    respuesta.coincidencia = filtrado[0];
-                }
-                return respuesta;
+                respuesta.coincidencia = filtrado[0];
             }
+            return respuesta;
         }
     };
 
