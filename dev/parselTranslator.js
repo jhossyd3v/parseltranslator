@@ -51,18 +51,8 @@
         return nueva_palabra;
     };
 
-    let render_abecedario = function () {
-        let abecedario_keys = Object.keys(abecedario);
-        let htmlContent = "";
-
-        abecedario_keys.forEach((letra) => {
-            htmlContent += `<div class="abc_item">
-                                <span class="abc_item--letra"> ${letra} = </span>
-                                <span class="abc_item--parsel">${abecedario[letra]}</span>
-                            </div>`;
-        });
-
-        return htmlContent;
+    let get_abecedario = function () {
+        return abecedario;
     };
 
     let traducir_parsel_a_humano = function (texto = "") {
@@ -103,7 +93,7 @@
 
         let abecedario_keys = Object.keys(abecedario);
         let filtrado = abecedario_keys.filter(letra => {
-            return abecedario[letra] == porcion;
+            return abecedario[letra] == porcion.toLowerCase();
         })
 
         if (filtrado.length == 0 && size > 2) {
@@ -123,7 +113,7 @@
     if (!window.hasOwnProperty("parselTranslator")) {
         window.parselTranslator = {
             traducir_a_parsel: traducir_texto_a_parsel,
-            render_abecedario: render_abecedario,
+            get_abecedario: get_abecedario,
             traducir_parsel_a_humano: traducir_parsel_a_humano
         };
     }
