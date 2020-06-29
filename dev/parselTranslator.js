@@ -1,4 +1,5 @@
 (function abecedario() {
+    /* Definición de abecedario parsel */
     let abecedario = {
         a: "esh",
         b: "ch",
@@ -26,13 +27,20 @@
         x: "shh",
         y: "sss",
         z: "xiy",
+        'á': 'esh',
+        'é': 'ash',
+        'í': 'osh',
+        'ó': 'ush',
+        'ú': 'ish'
     };
 
     let en_parsel = '';
 
+    /* Busca la coincidencia de caracter en el abecedario */
     let traducir_caracter_a_parsel = function (caracter = "") {
         caracter = caracter.toLowerCase();
-        let nuevo_caracter = abecedario[caracter];
+        let nuevo_caracter = abecedario[caracter] ?? caracter;
+
         if (nuevo_caracter == undefined) {
             return caracter;
         }
