@@ -36,7 +36,7 @@
 
     let en_parsel = '';
 
-    /* Busca la coincidencia de caracter en el abecedario */
+    /* Recibe un caracter y busca la coincidencia del caracter en el abecedario */
     let traducir_caracter_a_parsel = function (caracter = "") {
         caracter = caracter.toLowerCase();
         let nuevo_caracter = abecedario[caracter] ?? caracter;
@@ -48,6 +48,7 @@
         return nuevo_caracter;
     };
 
+    /* Recibe una palabra, la divide en caracteres y la procesa */
     let traducir_texto_a_parsel = function (texto = "") {
         let caracteres = texto.split("");
         let nueva_palabra = "";
@@ -59,10 +60,12 @@
         return nueva_palabra;
     };
 
+    /* Retorna abecedario */
     let get_abecedario = function () {
         return abecedario;
     };
 
+    /* Recibe un texto, lo divide en palabras */
     let traducir_parsel_a_humano = function (texto = "") {
         let palabras = texto.split(" ");
         let traduccion = '';
@@ -74,13 +77,25 @@
         return traduccion.trim();
     };
 
+    /* Recibe un texto y lo procesa para buscar coincidencias en el abecedario */
     let analizar_palabra_parsel = function (texto = "", inicio = 0) {
         if (inicio == 0) {
+            /* Se reinicia la variable */
             en_parsel = '';
         }
 
-        let porcion = texto.substr(inicio, 4);
-        let coincidencia = buscar_coincidencia_parsel(porcion);
+        let porcion = '';
+        let coincidencia = {};
+
+        /* Se buscan coincidencias en textos de 8 caracteres, divididos en 2 porciones */
+        porcion = texto.substr(inicio, 8);
+        coincidencia = buscar_coincidencia_parsel_especial(porcion);
+
+        /* Si no se encuentra ese tipo de coincidencia se realiza búsqueda normal */
+        if (coincidencia.coincidencia == '') {
+            porcion = texto.substr(inicio, 4);
+            coincidencia = buscar_coincidencia_parsel(porcion);
+        }
 
         if (inicio > texto.length) {
             return en_parsel;
@@ -94,7 +109,8 @@
     let buscar_coincidencia_parsel = function (texto = "", size = 4) {
         let respuesta = {
             coincidencia: texto,
-            size: size
+            size: size,
+            encontrado: false
         };
 
         let porcion = texto.substr(0, size);
@@ -113,10 +129,49 @@
                 respuesta.size = 1;
             } else {
                 respuesta.coincidencia = filtrado[0];
+                respuesta.encontrado = true
             }
             return respuesta;
         }
     };
+
+    let buscar_coincidencia_parsel_especial = function (texto = '', first_size = 2) {
+        /* Se divide el texto en 2 */
+        let last_size = texto.length - first_size;
+        let letra_inicial = texto.substr(0, first_size);
+        let letra_final = texto.substr(first_size, last_size);
+        let coincidencia_inicial = {};
+        let coincidencia_final = {};
+
+        /* Se buscan coincidencias para las 2 letras */
+        coincidencia_inicial = buscar_coincidencia_parsel(letra_inicial, first_size);
+        coincidencia_final = buscar_coincidencia_parsel(letra_final, last_size);
+
+        /* Si ambas no coinciden en tamaño se realiza otra prueba o se envía el fallo al encontrar coincidencia */
+        if (coincidencia_inicial.size != first_size || coincidencia_final.size != last_size || (last_size == coincidencia_final.size && !coincidencia_final.encontrado)) {
+            if (texto.length > 5) {
+                if (last_size > 0) {
+                    first_size = first_size + 1;
+                } else {
+                    first_size = 2;
+                    texto = texto.substr(0, (texto.length - 1))
+                }
+
+                return buscar_coincidencia_parsel_especial(texto, first_size)
+            } else {
+                return {
+                    coincidencia: '',
+                    size: 0
+                };
+            }
+        } else {
+            /* Si coinciden se envía la concatenación de ambos caracteres */
+            return {
+                coincidencia: coincidencia_inicial.coincidencia + coincidencia_final.coincidencia,
+                size: coincidencia_inicial.size + coincidencia_final.size
+            };
+        }
+    }
 
     if (!window.hasOwnProperty("parselTranslator")) {
         window.parselTranslator = {
