@@ -149,7 +149,7 @@
 
         /* Si ambas no coinciden en tamaño se realiza otra prueba o se envía el fallo al encontrar coincidencia */
         if (coincidencia_inicial.size != first_size || coincidencia_final.size != last_size || (last_size == coincidencia_final.size && !coincidencia_final.encontrado)) {
-            if (texto.length > 5) {
+            if (texto.length > 4) {
                 if (last_size > 0) {
                     first_size = first_size + 1;
                 } else {
