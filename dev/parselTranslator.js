@@ -106,7 +106,7 @@
         }
     };
 
-    let buscar_coincidencia_parsel = function (texto = "", size = 4) {
+    let buscar_coincidencia_parsel = function (texto = "", size = 4, seguir_buscando = true) {
         let respuesta = {
             coincidencia: texto,
             size: size,
@@ -120,7 +120,7 @@
             return abecedario[letra] == porcion.toLowerCase();
         })
 
-        if (filtrado.length == 0 && size > 2) {
+        if (filtrado.length == 0 && size > 2 && seguir_buscando) {
             let new_size = size - 1;
             return buscar_coincidencia_parsel(texto, new_size);
         } else {
@@ -138,18 +138,21 @@
     let buscar_coincidencia_parsel_especial = function (texto = '', first_size = 2) {
         /* Se divide el texto en 2 */
         let last_size = texto.length - first_size;
+        if (last_size < 0) {
+            last_size = 0;
+        }
         let letra_inicial = texto.substr(0, first_size);
         let letra_final = texto.substr(first_size, last_size);
         let coincidencia_inicial = {};
         let coincidencia_final = {};
 
         /* Se buscan coincidencias para las 2 letras */
-        coincidencia_inicial = buscar_coincidencia_parsel(letra_inicial, first_size);
-        coincidencia_final = buscar_coincidencia_parsel(letra_final, last_size);
+        coincidencia_inicial = buscar_coincidencia_parsel(letra_inicial, first_size, false);
+        coincidencia_final = buscar_coincidencia_parsel(letra_final, last_size, false);
 
         /* Si ambas no coinciden en tamaño se realiza otra prueba o se envía el fallo al encontrar coincidencia */
         if (coincidencia_inicial.size != first_size || coincidencia_final.size != last_size || (last_size == coincidencia_final.size && !coincidencia_final.encontrado)) {
-            if (texto.length > 5) {
+            if (texto.length > 4) {
                 if (last_size > 0) {
                     first_size = first_size + 1;
                 } else {
