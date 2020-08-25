@@ -1,91 +1,161 @@
 body {
-  font-family: "Harry Potter Regular";
   background-color: #193549;
-  color: rgb(193, 209, 193);
-  text-align: center;
-}
-
-.container {
-  width: 100%;
-}
-
-.ta_translator {
-  width: 85%;
-  display: inline-block;
-  margin: 0 auto 10px;
-}
-
-.ta_translator label,
-.ta_translator textarea {
-  display: block;
-  text-align: left;
-}
-
-.ta_translator textarea {
-  width: 100%;
-}
-
-.translator_container,
-.abc_container {
-  height: 450px;
-  padding: 10px auto;
-}
-
-.button_container {
-  margin-top: 10px;
-  display: inline-block;
-}
-
-.button_container button {
-  background: green;
-  color: rgb(193, 209, 193);
   font-family: "Harry Potter Regular";
-  height: 50px;
-  width: 150px;
+  color: #c1d1c1;
 }
 
-.menu_item {
-  display: inline-block;
+.translator {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 80vh;
+}
+.translator--abc {
+  min-height: 70vh;
+}
+.translator__title {
+  text-align: center;
+  margin: 0;
+  padding: 15px 0 0 0;
+}
+.translator__menu__list {
+  display: flex;
+  justify-content: space-around;
+  padding-inline-start: 0;
+  margin: 0;
+  padding: 5px 0;
+}
+.translator__menu__list__item {
   list-style: none;
-  margin-right: 15px;
+  padding: 0 5px;
+  margin: 0 5px;
 }
-
-.menu_item a,
-a {
-  color: rgb(193, 209, 193);
+.translator__menu__list__item__link {
+  text-decoration: none;
 }
-
-.menu_item a:hover {
+.translator__menu__list__item__link:visited {
+  color: #c1d1c1;
+}
+.translator__menu__list__item__link:hover, .translator__menu__list__item__link:focus {
   color: yellow;
 }
-
-.abc_item {
+.translator__box {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.translator__box__section {
+  padding: 5px;
+}
+.translator__box__section--languages__options {
+  display: flex;
+  justify-content: center;
+}
+.translator__box__language {
+  border: 1px solid #c1d1c1;
+  border-radius: 5px;
+  padding: 5px;
+  line-height: 3;
+}
+.translator__box__language__icon--mobile {
   display: inline-block;
-  width: 30%;
-  margin-bottom: 5px;
-  margin-right: 5px;
-  font-size: 26px;
+}
+.translator__box__language__icon--desktop {
+  display: none;
+}
+.translator__box__textarea {
+  border-radius: 10px;
+  resize: none;
+  width: 90%;
+  padding: 10px;
+}
+.translator__box__textarea:disabled {
+  background-color: #fff;
+}
+.translator__main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+}
+.translator__main#abc_container {
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.translator__main#abc_container .abc_item {
+  padding: 5px;
+  margin: 0 10px;
+  font-size: 24px;
+  line-height: 2;
+  height: 40px;
   border-right: 1px solid #ccc;
 }
 
-.abc_item--letra {
-  text-transform: uppercase;
+#translator__switch__button,
+#translator__button {
+  padding: 15px 35px;
+  margin: 0 10px;
+  border-radius: 5px;
+  background-color: green;
+  color: #c1d1c1;
+}
+
+footer {
+  display: flex;
+  height: 3rem;
+  text-align: center;
+}
+footer p {
+  margin: 0;
 }
 
 @media only screen and (min-device-width: 768px) {
-  .container {
-    width: 80%;
+  body {
+    width: 90%;
     margin: 0 auto;
   }
 
-  .ta_translator {
-    width: 40%;
-    margin: 0 10px;
+  .translator {
+    min-height: 100vh;
+  }
+  .translator--abc {
+    min-height: 90vh;
+  }
+  .translator__menu__list {
+    justify-content: center;
+  }
+  .translator__main#abc_container .abc_item {
+    margin: 0 45px;
+  }
+  .translator__box {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .translator__box--texts {
+    padding: 5vh 0;
+  }
+  .translator__box__section:nth-of-type(odd) {
+    flex-grow: 2;
+  }
+  .translator__box__section--languages__options {
+    align-items: center;
+  }
+  .translator__box__language__icon--mobile {
+    display: none;
+  }
+  .translator__box__language__icon--desktop {
+    display: inline-block;
+  }
+  .translator__box__textarea {
+    height: 300px;
   }
 
-  .translator_container,
-  .abc_container {
-    height: 450px;
-    padding: 20px auto;
+  #translator__button {
+    padding: 30px 50px;
+  }
+
+  footer {
+    justify-content: center;
   }
 }

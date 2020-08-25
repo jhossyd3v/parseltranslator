@@ -3,7 +3,7 @@ window.onload = function () {
 }
 
 function render_abecedario() {
-    let abecedario = parselTranslator.get_abecedario();
+    let abecedario = decoder_encoder.get_abc();
     let abecedario_keys = Object.keys(abecedario);
     let htmlContent = "";
 
