@@ -1,42 +1,42 @@
+let translator_button = document.getElementById('translator__button');
+let switch_button = document.getElementById('translator__switch__button');
+/* let switch_button;
+let translator_button; */
 window.onload = function () {
-    let boton_traducir = document.getElementById('boton_traducir');
-    let boton_cambiar = document.getElementById('boton_cambiar');
-    boton_traducir.onclick = traducir_click;
-    boton_cambiar.onclick = cambio_click;
+    translator_button.onclick = translator_click;
+    switch_button.onclick = switch_click;
 };
 
-function traducir_click(event) {
-    let ta_from = document.getElementById('ta_from');
-    let ta_to = document.getElementById('ta_to');
+function translator_click(event) {
+    let txt_from = document.getElementById('txt_from');
+    let txt_to = document.getElementById('txt_to');
 
-    let data_traduccion = boton_cambiar.getAttribute('data-traduccion');
-    let texto_from = ta_from.value;
-    let texto_to = '';
-    if (data_traduccion == 'parsel_humano') {
-        texto_to = parselTranslator.traducir_a_parsel(texto_from);
+    let translate_data = switch_button.getAttribute('data-translate');
+    let text_from = txt_from.value;
+    let text_to = '';
+    if (translate_data == 'parsel_human') {
+        text_to = decoder_encoder.to_encode(text_from);
     } else {
-        texto_to = parselTranslator.traducir_parsel_a_humano(texto_from);
+        text_to = decoder_encoder.to_decode(text_from);
     }
-    ta_to.value = texto_to;
+    txt_to.value = text_to;
 }
 
-function cambio_click(event) {
-    let data_traduccion = boton_cambiar.getAttribute('data-traduccion');
-    let label_from = document.querySelector('label[for="ta_from"]');
-    let label_to = document.querySelector('label[for="ta_to"]');
-    let ta_from = document.getElementById('ta_from');
-    let ta_to = document.getElementById('ta_to');
-    if (data_traduccion == 'parsel_humano') {
-        boton_cambiar.setAttribute('data-traduccion', 'humano_parsel');
-        boton_cambiar.textContent = 'Humano a Parsel';
+function switch_click(event) {
+    let translate_data = switch_button.getAttribute('data-translate');
+    let label_from = document.getElementById('text_from');
+    let label_to = document.getElementById('text_to');
+    let txt_from = document.getElementById('txt_from');
+    let txt_to = document.getElementById('txt_to');
+    if (translate_data == 'parsel_human') {
+        switch_button.setAttribute('data-translate', 'human_parsel');
         label_from.textContent = 'Parsel';
         label_to.textContent = 'Humano';
     } else {
-        boton_cambiar.setAttribute('data-traduccion', 'parsel_humano');
-        boton_cambiar.textContent = 'Parsel a Humano';
+        switch_button.setAttribute('data-translate', 'parsel_human');
         label_from.textContent = 'Humano';
         label_to.textContent = 'Parsel';
     }
-    ta_from.value = '';
-    ta_to.value = '';
+    txt_from.value = '';
+    txt_to.value = '';
 }

@@ -6,37 +6,63 @@
     <title>Parsel Translator</title>
     <link
       rel="stylesheet"
+      href="./example_files/vendor/normalize/normalize.css"
+    />
+    <link
+      rel="stylesheet"
       href="./example_files/vendor/hpfont/css/hpfontstyle.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./example_files/vendor/fontawesome/css/all.min.css"
     />
     <link rel="stylesheet" href="./example_files/css/index.css" />
   </head>
-
   <body>
-    <div class="container">
-      <header>
-        <h1>Parsel Translator</h1>
-        <nav class="menu">
-          <ul class="menu_list">
-            <li class="menu_item"><a href="./">Home</a></li>
-            <li class="menu_item">
-              <a href="./abcparsel.html">Ver ABCParsel</a>
+    <main class="translator translator--abc">
+      <header class="translator__header">
+        <h1 class="translator__title">Parsel Translator</h1>
+        <nav class="translator__menu">
+          <ul class="translator__menu__list">
+            <li class="translator__menu__list__item">
+              <a class="translator__menu__list__item__link" href="./">
+                <i
+                  class="fas fa-home translator__menu__list__item__link__icon"
+                ></i>
+                <span class="translator__menu__list__item__link__text"
+                  >Home</span
+                >
+              </a>
+            </li>
+            <li class="translator__menu__list__item">
+              <a
+                class="translator__menu__list__item__link"
+                href="./abcparsel.html"
+              >
+                <i
+                  class="fas fa-list translator__menu__list__item__link__icon"
+                ></i>
+                <span class="translator__menu__list__item__link__text"
+                  >ABCParsel</span
+                >
+              </a>
             </li>
           </ul>
         </nav>
       </header>
-      <section id="abc_container" class="abc_container">
+      <section id="abc_container" class="translator__main abc_container">
         <div class="abc_item">
           <span class="abc_item--letra"></span>
           <span class="abc_item--parsel"></span>
         </div>
       </section>
-      <footer>
-        <p>
-          2020 - comentarios, sugerencias y otros en el correo
-          chrisj_contreras@outlook.com
-        </p>
-      </footer>
-    </div>
+    </main>
+    <footer>
+      <p>
+        2020 - comentarios, sugerencias y otros en el correo
+        chrisj_contreras@outlook.com
+      </p>
+    </footer>
     <script src="./dist/parselTranslator.min.js"></script>
     <script src="./example_files/js/abcparsel.js"></script>
   </body>

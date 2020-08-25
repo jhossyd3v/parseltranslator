@@ -10,49 +10,122 @@
     />
     <link
       rel="stylesheet"
+      href="./example_files/vendor/normalize/normalize.css"
+    />
+    <link
+      rel="stylesheet"
       href="./example_files/vendor/hpfont/css/hpfontstyle.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./example_files/vendor/fontawesome/css/all.min.css"
     />
     <link rel="stylesheet" href="./example_files/css/index.css" />
   </head>
-
   <body>
-    <div class="container">
-      <header>
-        <h1>Parsel Translator</h1>
-        <nav class="menu">
-          <ul class="menu_list">
-            <li class="menu_item"><a href="./">Home</a></li>
-            <li class="menu_item">
-              <a href="./abcparsel.html">Ver ABCParsel</a>
+    <main class="translator">
+      <header class="translator__header">
+        <h1 class="translator__title">Parsel Translator</h1>
+        <nav class="translator__menu">
+          <ul class="translator__menu__list">
+            <li class="translator__menu__list__item">
+              <a class="translator__menu__list__item__link" href="./">
+                <i
+                  class="fas fa-home translator__menu__list__item__link__icon"
+                ></i>
+                <span class="translator__menu__list__item__link__text"
+                  >Home</span
+                >
+              </a>
+            </li>
+            <li class="translator__menu__list__item">
+              <a
+                class="translator__menu__list__item__link"
+                href="./abcparsel.html"
+              >
+                <i
+                  class="fas fa-list translator__menu__list__item__link__icon"
+                ></i>
+                <span class="translator__menu__list__item__link__text"
+                  >ABCParsel</span
+                >
+              </a>
             </li>
           </ul>
         </nav>
       </header>
-      <section class="translator_container">
-        <div class="div ta_translator">
-          <label for="ta_from">Humano: </label>
-          <textarea name="ta_from" id="ta_from" cols="30" rows="8"></textarea>
-        </div>
-        <div class="div ta_translator">
-          <label for="ta_to">Parsel:</label>
-          <textarea
-            name="ta_to"
-            id="ta_to"
-            cols="30"
-            rows="8"
-            disabled
-          ></textarea>
-        </div>
-        <div class="buttons_container">
-          <div class="button_container">
-            <button id="boton_traducir">Traducir</button>
-          </div>
-          <div class="button_container">
+      <section class="translator__main">
+        <section class="translator__box translator__box--texts">
+          <section class="translator__box__section">
+            <!-- <label class="translator__box__label" for="txt_from"
+              >Humano:
+            </label> -->
+            <textarea
+              class="translator__box__textarea"
+              name="txt_from"
+              id="txt_from"
+              cols="30"
+              rows="8"
+            ></textarea>
+          </section>
+          <section
+            class="translator__box__section translator__box__section--languages__options"
+          >
+            <span class="translator__box__language">
+              <i
+                class="fas fa-chevron-left translator__box__language__icon translator__box__language__icon--from translator__box__language__icon--desktop"
+              ></i>
+              <i
+                class="fas fa-chevron-up translator__box__language__icon translator__box__language__icon--from translator__box__language__icon--mobile"
+              ></i>
+              <span
+                id="text_from"
+                class="translator__box__language__text translator__box__language__text--from"
+                >Humano</span
+              >
+            </span>
+            <button
+              id="translator__switch__button"
+              data-translate="parsel_human"
+            >
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+            <span class="translator__box__language">
+              <span
+                id="text_to"
+                class="translator__box__language__text translator__box__language__text--to"
+                >Parsel</span
+              >
+              <i
+                class="fas fa-chevron-right translator__box__language__icon translator__box__language__icon--to translator__box__language__icon--desktop"
+              ></i>
+              <i
+                class="fas fa-chevron-down translator__box__language__icon translator__box__language__icon--to translator__box__language__icon--mobile"
+              ></i>
+            </span>
+          </section>
+          <section class="translator__box__section">
+            <!-- <label for="txt_to">Parsel:</label> -->
+            <textarea
+              class="translator__box__textarea"
+              name="txt_to"
+              id="txt_to"
+              cols="30"
+              rows="8"
+              disabled
+            ></textarea>
+          </section>
+        </section>
+        <section class="translator__box translator__box--buttons">
+          <!-- <div class="button"> -->
+          <button id="translator__button">Traducir</button>
+          <!-- </div> -->
+          <!-- <div class="button">
             <button id="boton_cambiar" data-traduccion="parsel_humano">
               Parsel a Humano
             </button>
-          </div>
-        </div>
+          </div> -->
+        </section>
       </section>
       <footer>
         <p>
@@ -60,7 +133,7 @@
           chrisj_contreras@outlook.com
         </p>
       </footer>
-    </div>
+    </main>
     <script src="./dist/parselTranslator.min.js"></script>
     <script src="./example_files/js/index.js"></script>
   </body>
