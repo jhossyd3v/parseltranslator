@@ -3,6 +3,9 @@ let switch_button = document.getElementById('translator__switch__button');
 /* let switch_button;
 let translator_button; */
 window.onload = function () {
+    window.addEventListener('consentGranted', () => {
+        window.clarity('consent')
+    })
     translator_button.onclick = translator_click;
     switch_button.onclick = switch_click;
 };

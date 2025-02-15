@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"[javascript]": {
+			"editor.defaultFormatter": "numso.prettier-standard-vscode"
+		},
+		"prettier.documentSelectors": ["**/*.astro"],
+		"[astro]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"prettier.configPath": "",
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact"
+		],
+		"css.validate": false,
+		"less.validate": false,
+		"scss.validate": false,
+		"stylelint.enable": true,
+		"stylelint.validate": ["css", "less", "postcss", "scss"],
+		"editor.codeActionsOnSave": {
+			"source.fixAll.stylelint": "explicit"
+		}
+	}
+}
