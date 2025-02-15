@@ -1,7 +1,7 @@
 body {
   background-color: #193549;
   font-family: "Harry Potter Regular";
-  color: #c1d1c1;
+  color: rgb(193, 209, 193);
 }
 
 .translator {
@@ -34,7 +34,7 @@ body {
   text-decoration: none;
 }
 .translator__menu__list__item__link:visited {
-  color: #c1d1c1;
+  color: rgb(193, 209, 193);
 }
 .translator__menu__list__item__link:hover, .translator__menu__list__item__link:focus {
   color: yellow;
@@ -52,7 +52,7 @@ body {
   justify-content: center;
 }
 .translator__box__language {
-  border: 1px solid #c1d1c1;
+  border: 1px solid rgb(193, 209, 193);
   border-radius: 5px;
   padding: 5px;
   line-height: 3;
@@ -98,7 +98,7 @@ body {
   margin: 0 10px;
   border-radius: 5px;
   background-color: green;
-  color: #c1d1c1;
+  color: rgb(193, 209, 193);
 }
 
 footer {
@@ -115,7 +115,6 @@ footer p {
     width: 90%;
     margin: 0 auto;
   }
-
   .translator {
     min-height: 100vh;
   }
@@ -150,12 +149,48 @@ footer p {
   .translator__box__textarea {
     height: 300px;
   }
-
   #translator__button {
     padding: 30px 50px;
   }
-
   footer {
     justify-content: center;
   }
+}
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+.cookie-banner.hidden {
+  display: none;
+}
+.cookie-banner p {
+  font-size: 14px;
+}
+.cookie-banner a {
+  font-size: 14px;
+  line-height: 1;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+}
+.cookie-banner a.cookie__accept {
+  display: flex !important;
+  background-color: green;
+  color: rgb(193, 209, 193);
+}
+.cookie-banner a.cookie__reject {
+  background-color: rgb(193, 209, 193);
+  color: black;
+}
+.cookie-banner .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

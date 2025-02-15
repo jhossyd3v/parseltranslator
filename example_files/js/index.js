@@ -1,11 +1,26 @@
 let translator_button = document.getElementById('translator__button');
 let switch_button = document.getElementById('translator__switch__button');
+const cookieBanner = document.querySelector('.cookie-banner');
+const cookieAccept = document.querySelector('.cookie__accept');
+const cookieReject = document.querySelector('.cookie__reject');
 /* let switch_button;
 let translator_button; */
 window.onload = function () {
-    window.addEventListener('consentGranted', () => {
-        window.clarity('consent')
+    // know if the user has accepted the cookies
+    const clarityCookie = document.cookie.split(';').find(cookie => cookie.includes('clarity'));
+    if (clarityCookie) {
+        cookieBanner.classList.add('hidden');
+    }
+    cookieAccept.addEventListener('click', () => {
+        if (window.clarity) {
+            window.clarity('consent')
+        }
+        cookieBanner.classList.add('hidden');
     })
+    cookieReject.addEventListener('click', () => {
+        cookieBanner.classList.add('hidden');
+    })
+
     translator_button.onclick = translator_click;
     switch_button.onclick = switch_click;
 };
