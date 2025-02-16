@@ -8,13 +8,15 @@ let translator_button; */
 window.onload = function () {
     // know if the user has accepted the cookies
     const clarityCookie = document.cookie.split(';').find(cookie => cookie.includes('clarity'));
-    if (clarityCookie) {
+    const gtagCookie = document.cookie.split(';').find(cookie => cookie.includes('_ga'));
+    if (clarityCookie || gtagCookie) {
         cookieBanner.classList.add('hidden');
     }
     cookieAccept.addEventListener('click', () => {
         if (window.clarity) {
             window.clarity('consent')
         }
+        consentGrantedGoogleTagManager()
         cookieBanner.classList.add('hidden');
     })
     cookieReject.addEventListener('click', () => {
@@ -24,6 +26,17 @@ window.onload = function () {
     translator_button.onclick = translator_click;
     switch_button.onclick = switch_click;
 };
+
+function consentGrantedGoogleTagManager() {
+    if (gtag) {
+        gtag('consent', 'update', {
+            ad_storage: 'granted',
+            analytics_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted'
+        });
+    }
+}
 
 function translator_click(event) {
     let txt_from = document.getElementById('txt_from');
