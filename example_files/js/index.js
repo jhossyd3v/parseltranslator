@@ -7,9 +7,9 @@ const cookieReject = document.querySelector('.cookie__reject');
 let translator_button; */
 window.onload = function () {
     // know if the user has accepted the cookies
-    const clarityCookie = document.cookie.split(';').find(cookie => cookie.includes('clarity'));
-    const gtagCookie = document.cookie.split(';').find(cookie => cookie.includes('_ga'));
-    if (clarityCookie || gtagCookie) {
+    const appConsentCookie = document.cookie.split(';').find(cookie => cookie.includes('app_analytics_consent'));
+
+    if (appConsentCookie) {
         cookieBanner.classList.add('hidden');
     }
     cookieAccept.addEventListener('click', () => {
@@ -17,6 +17,7 @@ window.onload = function () {
             window.clarity('consent')
         }
         consentGrantedGoogleTagManager()
+        setCookie('app_analytics_consent', 'true', 365);
         cookieBanner.classList.add('hidden');
     })
     cookieReject.addEventListener('click', () => {
@@ -36,6 +37,16 @@ function consentGrantedGoogleTagManager() {
             ad_personalization: 'granted'
         });
     }
+}
+
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 function translator_click(event) {
